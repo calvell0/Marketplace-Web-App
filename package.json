@@ -1,0 +1,27 @@
+{
+  "name": "calvellomattproject2",
+  "version": "1.0.0",
+  "description": "project 2",
+  "main": "routes/itemRoutes.js",
+  "scripts": {
+    "test": "test",
+    "start": "node routes/itemRoutes.js"
+  },
+  "author": "Matt Calvello",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.2.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.0.3",
+    "validator": "^13.11.0"
+  }
+}

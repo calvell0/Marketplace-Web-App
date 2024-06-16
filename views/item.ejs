@@ -1,0 +1,15 @@
+<% const title = (item) ? item.title : "Item Not Found"; %>
+
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: title }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <div class="item-view">
+        <%- include("partials/item-full", { item, seller }); %>
+    </div>
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

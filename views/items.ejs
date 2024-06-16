@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: "Pickleball Plus | Items" }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <% if (items && items.length > 0) { %>
+     <div class="items">
+        <% items.forEach((item) => { %>
+        <%- include("partials/item-preview", { item: item }); %>
+        <% }); %>
+     </div>
+    <% } else { %>
+            <h1>No items found</h1>
+    <% } %>
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

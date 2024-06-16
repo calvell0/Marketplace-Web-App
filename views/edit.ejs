@@ -1,0 +1,50 @@
+<!doctype html>4
+<html lang="en">
+<%- include("partials/head", { title: "Pickleball Plus | Edit Listing" }); %>
+<body>
+
+<%- include("partials/header"); %>
+<div id="main">
+    <div class="sell">
+        <div class="sell-text">
+            <h1>Edit your listing:</h1>
+        </div>
+        <div class="sell-form">
+            <form action="/items/<%= item.id %>/edit" method="POST" enctype="multipart/form-data">
+                <label for="condition">
+                    Condition:
+                    <select id="condition" name="condition" required >
+                        <option value="new">new</option>
+                        <option value="like-new">like-new</option>
+                        <option value="used">used</option>
+                        <option value="poor">poor</option>
+                        <option value="parts-only">parts-only</option>
+                    </select>
+                </label>
+
+                <label for="title">
+                    Title:<input id="title" name="title" type="text" value="<%= item.title %>" required>
+                </label>
+                <label for="price">
+                    Price:<input id="price" name="price" type="number" value="<%= item.price %>" required>
+                </label>
+                <label for="details">
+                    Details:<textarea id="details" name="details" rows="4" required>
+                        <%= item.details %>
+                </textarea>
+                </label>
+                <label for="image">
+                    <img src="<%= item.image %>" alt="listing image" class="small-image">
+                    Image:<input id="image" type="file" name="image">
+                </label>
+                <button type="submit">Submit</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

@@ -1,0 +1,15 @@
+<% if (item) { %>
+    <% item.image = (item.image) ? item.image : "/resources/images/default.jpg"%>
+    <a href="/items/<%= item._id %>">
+        <div class="item">
+            <img src="<%= item.image %>" alt="paddle">
+            <span class="item_name"><b><%= item.title %></b></span>
+            <span class="condition"> <%= item.condition %></span>
+            <hr/>
+            <div class="price-offers">
+                <span class="price"><b>$<%= item.price %></b></span>
+                <span class="offers"><%= item.totalOffers %> offer(s)</span>
+            </div>
+        </div>
+    </a>
+<% } %>

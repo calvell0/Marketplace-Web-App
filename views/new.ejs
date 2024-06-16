@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: "Pickleball Plus | New Listing" }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <div class="sell">
+        <div class="sell-text">
+            <h1>List your pickleball gear on Pickleball Plus</h1>
+            <p>Enter your info and upload a photo: </p>
+        </div>
+        <div class="sell-form">
+            <form action="/items/new" method="POST" enctype="multipart/form-data">
+                <label for="condition">
+                    Condition:
+                    <select id="condition" name="condition" required>
+                        <option value="new">new</option>
+                        <option value="like-new">like-new</option>
+                        <option value="used">used</option>
+                        <option value="refurbished">refurbished</option>
+                        <option value="parts-only">parts-only</option>
+                    </select>
+                </label>
+
+                <label for="title">
+                    Title:<input id="title" name="title" type="text" placeholder="title" required>
+                </label>
+                <label for="price">
+                    Price:<input id="price" name="price" type="number" placeholder="price" required>
+                </label>
+                <label for="details">
+                    Details:<textarea id="details" name="details" rows="4" placeholder="title" required>
+
+                </textarea>
+                </label>
+                <label for="image">
+                    Image:<input id="image" type="file" name="image" required>
+                </label>
+                <button type="submit">Submit</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

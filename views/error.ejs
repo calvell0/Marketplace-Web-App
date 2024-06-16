@@ -1,0 +1,13 @@
+<% const title = "ERROR" %>
+
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: title }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <p> <%= error %></p>
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

@@ -1,0 +1,46 @@
+
+<% if (item) { %>
+<% item.image = (item?.image) ? item.image : "/resources/images/default.jpg"%>
+
+<img src="<%= item.image %>" alt="product image"/>
+<div class="info">
+        <h1>
+            <%= item.title %>
+        </h1>
+        <span>Condition: <%= item.condition %></span>
+        <br/>
+        <br/>
+        <span class="price-view">Price: <em>$<%= item.price %></em> | <%= item.totalOffers %> offer(s)</span>
+        <br/>
+        <br/>
+        <span class="seller">Seller: <%= seller.firstName + " " + seller.lastName %></span>
+        <br/>
+        <p class="details">
+            <%= item.details %>
+        </p>
+        <% if (user && seller._id == user._id) {%>
+                <a id="edit" href="/items/<%= item._id %>/edit">edit</a>
+                <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
+                        <button type="submit">delete</button>
+                </form>
+
+        <% } %>
+        <% if(item.active) { %>
+                <% if (user && seller._id != user._id) { %>
+                        <form action="/items/<%= item._id %>/offers/new" method="POST">
+                                <input type="number" name="amount" id="amount" required/>
+                                <label for="amount">
+                                        <button type="submit">Make an offer</button>
+                                </label>
+                        </form>
+                <% } %>
+                <% if (item.totalOffers > 0) { %>
+                        <h3>Highest offer: <%= item.highestOffer %></h3>
+                <% } %>
+        <% } else {%>
+                <span class="unavailable">This item is no longer available</span>
+        <% } %>
+</div>
+<% } else { %>
+    <h1>Item not found</h1>
+<% } %>

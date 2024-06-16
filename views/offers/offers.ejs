@@ -1,0 +1,45 @@
+<% const title = (item) ? item.title + " | Offers" : "Item Not Found"; %>
+
+<!doctype html>
+<html lang="en">
+<%- include("../partials/head", { title: title }); %>
+<body>
+<%- include("../partials/header"); %>
+<div id="main">
+    <% if (offers && item) { %>
+    <h1>Offers received for: <%= item.title %></h1>
+    <div class="table-container">
+        <table class="item-table">
+            <thead>
+                <tr>
+                    <th>Buyer</th>
+                    <th>Amount</th>
+                    <% if(item.active) {%>
+                        <th>Action</th>
+                    <% } else { %>
+                        <th>Status</th>
+                    <% } %>
+                </tr>
+            </thead>
+            <tbody>
+                <% offers.forEach(offer => { %>
+                    <tr>
+                        <td><%= offer.buyer.firstName + " " + offer.buyer.lastName %></td>
+                        <td><%= offer.amount %></td>
+                        <% if(offer.item.active) {%>
+                            <td><a href="/items/<%= offer.item._id %>/offers/<%= offer._id %>/accept?_method=POST" class="view-offers">Accept</a></td>
+                        <% } else { %>
+                            <td><%= offer.status %></td>
+                        <% } %>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <% } else { %>
+        <h1>No offers on this item</h1>
+    <% } %>
+</div>
+</body>
+<%- include("../partials/footer"); %>
+</html>

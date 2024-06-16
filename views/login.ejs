@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: "Pickleball Plus | Login" }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <div class="sell">
+        <div class="sell-text">
+            <h1>Login to Pickleball Plus</h1>
+
+        </div>
+        <div class="sell-form">
+            <form action="/users/login" method="POST">
+                <label for="title">
+                    Email:<input id="email" name="email" type="text" placeholder="example@gmail.com" required>
+                </label>
+                <label for="price">
+                    Password:<input id="password" name="password" type="password" required>
+                </label>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

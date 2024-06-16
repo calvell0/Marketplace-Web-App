@@ -1,0 +1,78 @@
+<% const title = "Pickleball Plus | " + (user) ? user.firstName + " " + user.lastName : "User Not Found"; %>
+
+<!doctype html>
+<html lang="en">
+<%- include("partials/head", { title: title }); %>
+<body>
+<%- include("partials/header"); %>
+<div id="main">
+    <h2 class="welcome">Welcome, <%= user.firstName %></h2>
+    <div id="tables" class="tables">
+        <% if (items.length) { %>
+            <div id="listing-table" class="table-container">
+                <h3>Your Listings</h3>
+                <table id="listings" class="item-table">
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <% items.forEach(item => { %>
+                        <% const link_class = (item.totalOffers > 0) ? "view-offers" : "disableLink"; %>
+                        <tr>
+                            <td><a href="/items/<%= item._id %>"><%= item.title %></a></td>
+                            <% if (item.active) { %>
+                                <td>Active</td>
+                            <% } else { %>
+                                <td>Inactive</td>
+                            <% } %>
+                            <td>
+                                <a href="/items/<%= item._id %>/edit"><img src="/resources/icons/edit.jpg" alt="edit"
+                                                                           class="table-icon"></a>
+                                <a href="/items/<%= item._id %>?_method=DELETE"><img
+                                            src="/resources/icons/delete.png" alt="delete"></a>
+                                <a href="/items/<%= item._id %>/offers" class="<%= link_class %>">View Offers</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        <% } else { %>
+            <p>You have no listings</p>
+        <% } %>
+        <% if(offers.length) { %>
+            <div id="offer-table" class="table-container">
+                <h3>Your Offers</h3>
+                <table id="offers" class="item-table">
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <% offers.forEach(offer => { %>
+                        <tr>
+                            <td><a href="/items/<%= offer.item._id %>"><%= offer.item.title %></a></td>
+                            <% if (offer.status === "pending") { %>
+                                <td>pending</td>
+                            <% } else if (offer.status === "accepted") { %>
+                                <td>accepted</td>
+                            <% } else if (offer.status === "rejected") { %>
+                                <td>rejected</td>
+                            <% } %>
+                            <td><%= offer.amount %></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        <% } else { %>
+            <p>You have made no offers</p>
+        <% } %>
+    </div>
+</div>
+</body>
+<%- include("partials/footer"); %>
+</html>

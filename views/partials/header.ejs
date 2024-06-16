@@ -1,0 +1,38 @@
+<header>
+    <nav id="nav">
+        <a href="/"><img src="/resources/images/p_plus1.jpg" alt="Pickleball Plus logo"/></a>
+
+        <form action="/items" method="GET">
+            <input name="search" id="search" type="text" placeholder="search"/>
+            <button id="search_b" type="submit">Go</button>
+        </form>
+        <div id="links">
+            <a href="/items">browse</a>
+            <a href="/items/new">sell</a>
+            <% if (!user) { %>
+                <a href="/users/login">login</a>
+                <a href="/users/register">sign up</a>
+            <% } else { %>
+                <a href="/users/logout">logout</a>
+                <a href="/users/profile">my account</a>
+            <% } %>
+
+        </div>
+    </nav>
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+        <%});%>
+    <%}%>
+
+    <% if(successMessages.length > 0) {%>
+
+        <% successMessages.forEach(message=>{%>
+        <div class='success'>
+            <%=message%>
+        </div>
+        <%});%>
+    <%}%>
+</header>
